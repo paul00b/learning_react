@@ -16,6 +16,7 @@ const LinkStyled = styled(Link)`
     color:white;
     position:relative;
     transition: all 600ms;
+    text-decoration:none;
     &:hover{
         background-image: ${colorsGlobal.gradientGreenBlue_btn};
         transition: all 0.6ms;

@@ -52,7 +52,7 @@ const CardBody = styled.div`
     font-weight:300;
     padding:10% 10px 0px 10px;
     overflow:hidden;
-    height:65%;
+    height:57%;
 `;
 
 export default (props) => (

@@ -5,13 +5,18 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `Think. Create. Repeat.`,
+  },
   plugins: [
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        name: `src`,
+        path: `${__dirname}/src/`,
       },
     },
+    `gatsby-transformer-remark`,
     {
      resolve:  `gatsby-plugin-styled-components`,
     }

@@ -1,6 +1,6 @@
 import React from "react"
+import { graphql } from "gatsby"
 import "../styles/custom.css"
-// import {Link} from "gatsby"
 import styled, {ThemeProvider} from "styled-components"
 import Header from "../components/header/header"
 import Container from"../components/container/container"
@@ -16,18 +16,39 @@ width:100%;
 flex-wrap:wrap;
 `;
 
-export default () => (
+export default ({ data }) => (
     <ThemeProvider theme={colors}>
         <Container>
             <Logo/>
-            <Header headerText="Think. Create. Repeat."/>
+            <Header headerText="Think.Create.Repeat."/>
             <Navbar />
             <CardContainer>
-                <Card cardType="I.T." cardBody="Lorem ipsum" cardTitle="Projet 1"/>
-                <Card cardType="Cooking" cardBody="Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi." cardTitle="Projet 2"/>
-                <Card cardType="Cooking" cardBody="Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi." cardTitle="Projet 2"/>
-                <Card cardType="Cooking" cardBody="Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi." cardTitle="Projet 2"/>
+                {/* <Card cardType={data.allMarkdownRemark.totalCount} cardBody="Lorem ipsum" cardTitle="Projet 1"/> */}
+                {/* {data.allMarkdownRemark.edges.map(({ node }) => (
+                   <Card key={node.id} cardTitle={node.frontmatter.title} cardBody={node.frontmatter.body} cardType={node.frontmatter.category}/>
+                    ))} */}
+                    {data.allMarkdownRemark.edges.map(({ node }) => (
+                            <Card key={node.id} cardTitle={node.frontmatter.title} cardBody={node.frontmatter.short_desc} cardType={node.frontmatter.category}/>
+                        ))}
             </CardContainer>
         </Container>
     </ThemeProvider>
     ) 
+    export const query = graphql`
+    query {
+        allMarkdownRemark {
+            totalCount
+            edges {
+              node {
+                id
+                frontmatter {
+                  title
+                  body
+                  category
+                  short_desc
+                }
+              }
+            }
+          }
+        }
+  `

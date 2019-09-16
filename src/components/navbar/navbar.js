@@ -1,7 +1,6 @@
 import React from "react";
 import {Link} from "gatsby"
-import NavStyle from  "./navbar.module.css"
-import styled, {ThemeProvider} from "styled-components"
+import styled from "styled-components"
 import colorsGlobal from "../../components/colors"
 
 const StyledContainer = styled.div`
@@ -12,8 +11,9 @@ const StyledContainer = styled.div`
     border-radius: 30px;
     margin-top:5%;
     width:79%;
+    padding:5px;
     &:hover a:not(:hover){
-      opacity:0.5;
+      opacity:0.4;
     }
 `;
 
@@ -30,18 +30,17 @@ const StyledLink = styled(Link)`
     &:hover, &:focus{
         font-weight: 500;
         transition: all 400ms;
-        font-size:103%;
         opacity:1!important;
     }
    
 `
 export default () => (
    <StyledContainer>
-       <StyledLink to="/">All</StyledLink>    
-       <StyledLink to="/">IT</StyledLink>    
-       <StyledLink to="/">Cooking</StyledLink>    
-       <StyledLink to="/">Video Games</StyledLink>    
-       <StyledLink to="/">V.R.</StyledLink>    
-       <StyledLink to="/">Others</StyledLink>    
+       <StyledLink >All</StyledLink>    
+       <StyledLink >IT</StyledLink>    
+       <StyledLink >Cooking</StyledLink>    
+       <StyledLink >Video Games</StyledLink>    
+       <StyledLink >V.R.</StyledLink>    
+       <StyledLink >Others</StyledLink>    
    </StyledContainer>
 );
