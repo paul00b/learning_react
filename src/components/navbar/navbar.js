@@ -12,15 +12,36 @@ const StyledContainer = styled.div`
     border-radius: 30px;
     margin-top:5%;
     width:79%;
+    &:hover a:not(:hover){
+      opacity:0.5;
+    }
 `;
 
+const StyledLink = styled(Link)`
+    text-decoration:none!important;
+    font-size:18px;
+    text-shadow: none;
+    color:white;
+    background-image:none;
+    padding:0px 20px;
+    font-weight:200;
+    height:100%;
+    transition: all 400ms;
+    &:hover, &:focus{
+        font-weight: 500;
+        transition: all 400ms;
+        font-size:103%;
+        opacity:1!important;
+    }
+   
+`
 export default () => (
    <StyledContainer>
-       <Link className={NavStyle.link} to="/">All</Link>    
-       <Link className={NavStyle.link} to="/">IT</Link>    
-       <Link className={NavStyle.link} to="/">Cooking</Link>    
-       <Link className={NavStyle.link} to="/">Video Games</Link>    
-       <Link className={NavStyle.link} to="/">V.R.</Link>    
-       <Link className={NavStyle.link} to="/">Others</Link>    
+       <StyledLink to="/">All</StyledLink>    
+       <StyledLink to="/">IT</StyledLink>    
+       <StyledLink to="/">Cooking</StyledLink>    
+       <StyledLink to="/">Video Games</StyledLink>    
+       <StyledLink to="/">V.R.</StyledLink>    
+       <StyledLink to="/">Others</StyledLink>    
    </StyledContainer>
 );

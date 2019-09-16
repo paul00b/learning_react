@@ -13,7 +13,7 @@ const CardContainer = styled.div`
 display:flex;
 margin-top:30px;
 width:100%;
-justify-content:center;
+flex-wrap:wrap;
 `;
 
 export default () => (
@@ -24,6 +24,8 @@ export default () => (
             <Navbar />
             <CardContainer>
                 <Card cardType="I.T." cardBody="Lorem ipsum" cardTitle="Projet 1"/>
+                <Card cardType="Cooking" cardBody="Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi." cardTitle="Projet 2"/>
+                <Card cardType="Cooking" cardBody="Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi." cardTitle="Projet 2"/>
                 <Card cardType="Cooking" cardBody="Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi." cardTitle="Projet 2"/>
             </CardContainer>
         </Container>

@@ -18,7 +18,7 @@ const LinkStyled = styled(Link)`
     transition: all 600ms;
     &:hover{
         background-image: ${colorsGlobal.gradientGreenBlue_btn};
-        transition: all 0.6s;
+        transition: all 0.6ms;
     }
 `;
 
