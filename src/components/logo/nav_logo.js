@@ -5,7 +5,10 @@ import styled from "styled-components"
 
 const StyledImg = styled.img`
     display:block;
-    margin: ${props => props.logoMargin || "4em auto"};
+    width:60px;
+    position:absolute;
+    left:30px;
+    top:20px;
 `;
 
 export default () => (

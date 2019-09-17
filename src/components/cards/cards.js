@@ -8,7 +8,6 @@ const CardContainer = styled.div`
     height:250px;
     min-width:250px;
     min-height:250px;
-
     position:relative;
     border-radius: 20px;
     margin:20px;
@@ -30,9 +29,9 @@ const CardHeader = styled.div`
     display:flex;
 `;
 const CardType = styled.div`
-    width: 50%;
+    width: 30%;
     text-align: center;
-    font-size: 19px;
+    font-size: 14px;
     height:45px;
     background-color: ${colorsGlobal.teal};
     border-radius:20px 0px 20px 0px;
@@ -40,10 +39,10 @@ const CardType = styled.div`
     font-weight: 200;
 `;
 const CardTitle = styled.div`
-    width: 50%;
+    width: 70%;
     text-align: left;
     padding-left:10px;
-    font-size:26px;
+    font-size:24px;
     font-weight:600;
 `;
 const CardBody = styled.div`
@@ -66,7 +65,7 @@ export default (props) => (
             {props.cardBody}
             </p>
         </CardBody>
-        <Cta linkName = "Voir plus"/>
+        <Cta linkName = "Voir plus" linkTo = {props.linkTo}/>
     </CardContainer>
 );
 

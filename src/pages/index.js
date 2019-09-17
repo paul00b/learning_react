@@ -28,7 +28,7 @@ export default ({ data }) => (
                    <Card key={node.id} cardTitle={node.frontmatter.title} cardBody={node.frontmatter.body} cardType={node.frontmatter.category}/>
                     ))} */}
                     {data.allMarkdownRemark.edges.map(({ node }) => (
-                            <Card key={node.id} cardTitle={node.frontmatter.title} cardBody={node.frontmatter.short_desc} cardType={node.frontmatter.category}/>
+                            <Card key={node.id} cardTitle={node.frontmatter.title} cardBody={node.frontmatter.short_desc} cardType={node.frontmatter.category} linkTo={node.fields.slug}/>
                         ))}
             </CardContainer>
         </Container>
@@ -47,8 +47,12 @@ export default ({ data }) => (
                   category
                   short_desc
                 }
+                fields{
+                  slug
+                }
               }
             }
           }
         }
+        
   `

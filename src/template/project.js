@@ -1,44 +1,91 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import "../styles/custom.css"
-import styled, {ThemeProvider} from "styled-components"
+import styled from "styled-components"
 import Container from"../components/container/container"
-import Logo from "../components/logo/logo"
+import Logo from "../components/logo/nav_logo"
+import File_img from "../images/document.js"
 import CardProject from "../components/card_project/card_project"
-import colors from "../components/colors"
-
+import SecondaryHeader from "../components/secondaryHeader/secondaryHeader"
 const ContainerHeader = styled.div`
     display:flex;
     flex-wrap: no-wrap;
-`
-const StyledLogo = styled(Logo)`
-   margin-top:4rem;
-    position:absolute;
 `;
 
-const SecondaryHeader = styled.h1`
-    display:inline-block;
-    width:100%;
-    margin:10.5rem auto 0rem auto;
-    bottom:0;
-`
+const StyledImg = styled.img`
+  border-radius: 5px;
+  width:280px;
+  margin: auto;
+`;
+
+const ImgContainer = styled.div`
+display:flex;
+flex-wrap: nowrap;
+justify-content:center;
+`; 
+const StyledIframe = styled.iframe`
+  border:none;
+  margin:auto;
+  display:block;
+`; 
+const StyledIcon = styled(File_img)`
+
+`; 
+
+
+
+
+function Video_section(props) {
+  const video_link = props.video_link;
+  if (video_link) {
+    return <CardProject>
+      <h1>Video</h1>
+      <StyledIframe src={video_link} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></StyledIframe>
+    </CardProject>;
+  }
+  return null;
+}
+
+function Doc_section(props) {
+  const file = props.file;
+  if (file) {
+    return <CardProject>
+      <h1>Fichiers</h1>
+      <Link to={file}>
+        <StyledIcon src={File_img} fill="white" height="100px" width="100px" />
+      </Link>
+    </CardProject>;
+  }
+  return null;
+}
+
 export default ({ data }) => {
     const project = data.markdownRemark
     return (
       <Container>
           <ContainerHeader>
-            <StyledLogo/>
-            <SecondaryHeader>
-            {project.frontmatter.title} 
-            </SecondaryHeader>
+              <Logo/>
+            <SecondaryHeader headerText = {project.frontmatter.title + " - " + project.frontmatter.category} />
           </ContainerHeader>
           <CardProject>
             <div>
-            <h1>- {project.frontmatter.date}</h1>
-            <h3>{project.frontmatter.category}</h3>
-            <div dangerouslySetInnerHTML={{ __html: project.html }} />
+            <h1>L'histoire </h1>
+            <p>
+              {project.frontmatter.story}
+            </p>
+            {/* <div dangerouslySetInnerHTML={{ __html: project.html }} /> */}
             </div>
           </CardProject>
+          <CardProject>
+          <h1>Screenshots </h1>
+            <ImgContainer>
+              <StyledImg src = {project.frontmatter.image_1}></StyledImg>
+              <StyledImg src = {project.frontmatter.image_2}></StyledImg>
+              <StyledImg src = {project.frontmatter.image_3}></StyledImg>
+            </ImgContainer>
+          </CardProject>
+          <Video_section video_link={project.frontmatter.video_link} />
+          <Doc_section file={project.frontmatter.file_1} />
       </Container>
     )
   }
@@ -52,6 +99,17 @@ export default ({ data }) => {
             category
             body
             short_desc
+            title
+            date
+            category
+            body
+            story
+            image_1
+            image_2
+            image_3
+            file_1
+            file_2
+            video_link
         }
       }
     }

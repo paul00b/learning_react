@@ -29,7 +29,7 @@ right:10px;
 bottom:7px;
 `
 export default (props) => (
-    <LinkStyled>
+    <LinkStyled to={props.linkTo}>
         {props.linkName} <IconStyled icon={faChevronRight} />
     </LinkStyled>
 );
