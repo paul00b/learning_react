@@ -29,11 +29,31 @@ const StyledIframe = styled.iframe`
   display:block;
 `; 
 const StyledIcon = styled(File_img)`
-
 `; 
 
+const LinkDiv = styled.div`
+  display:flex;
+  flex-wrap:nowrap;
+  justify-content:center;
+  text-align:left;
+  position:relative;
+  width:33%;
+  a{
+    text-decoration:none;
+  }
+  span{
+    color:white;
+    text-decoration:none;
+    position:absolute;
+    bottom:0px;
+    right:50%;
+  }
+`; 
 
-
+const Row = styled.div`
+display:flex;
+flex-wrap:no-wrap;
+`;
 
 function Video_section(props) {
   const video_link = props.video_link;
@@ -46,15 +66,16 @@ function Video_section(props) {
   return null;
 }
 
-function Doc_section(props) {
+function Doc_link(props) {
   const file = props.file;
+  const desc = props.desc;
   if (file) {
-    return <CardProject>
-      <h1>Fichiers</h1>
-      <Link to={file}>
-        <StyledIcon src={File_img} fill="white" height="100px" width="100px" />
-      </Link>
-    </CardProject>;
+    return <LinkDiv>
+              <Link to={file}>
+                <StyledIcon src={File_img} fill="white" height="100px" width="100px" />
+              </Link>
+              <span>{desc}</span>
+            </LinkDiv>
   }
   return null;
 }
@@ -85,7 +106,15 @@ export default ({ data }) => {
             </ImgContainer>
           </CardProject>
           <Video_section video_link={project.frontmatter.video_link} />
-          <Doc_section file={project.frontmatter.file_1} />
+          
+          <CardProject>
+            <h1>Fichiers</h1>
+            <Row>
+              <Doc_link file={project.frontmatter.file_1} desc={project.frontmatter.file_1_desc} />
+              <Doc_link file={project.frontmatter.file_2} desc={project.frontmatter.file_2_desc}/>
+              <Doc_link file={project.frontmatter.file_3} desc={project.frontmatter.file_3_desc}/>
+            </Row>
+          </CardProject>
       </Container>
     )
   }
@@ -109,6 +138,10 @@ export default ({ data }) => {
             image_3
             file_1
             file_2
+            file_3
+            file_1_desc
+            file_2_desc
+            file_3_desc
             video_link
         }
       }
